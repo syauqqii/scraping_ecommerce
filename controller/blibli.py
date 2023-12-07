@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -7,7 +6,8 @@ from json import loads
 import pandas as pd
 
 class Blibli:
-    def __init__(self):
+    def __init__(self, driver):
+        self.driver = driver
         self.keyword = ""
         self._search_keyword = ""
         self._save_keyword = ""
@@ -21,17 +21,34 @@ class Blibli:
     def get_save_keyword(self):
         return self._save_keyword
 
-    def get_product(self):
+    def get_product(self, filter):
         try:
-            driver = webdriver.Firefox()
+            print(" > proses ! [5]")
 
-            url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=16&page=1&start=0&searchTerm={self._search_keyword}"
-            driver.get(url_page1_blibli)
+            # terkait 1, terbaru 2, terlaris 3, harga termurah 4, harga termahal 5
+            if filter == 1:
+                url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=0&page=1&start=0&searchTerm={self._search_keyword}"
+            elif filter == 2:
+                url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=1&page=1&start=0&searchTerm={self._search_keyword}"
+            elif filter == 3:
+                url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=16&page=1&start=0&searchTerm={self._search_keyword}"
+            elif filter == 4:
+                url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=3&page=1&start=0&searchTerm={self._search_keyword}"
+            elif filter == 5:
+                url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=4&page=1&start=0&searchTerm={self._search_keyword}"
+            elif filter == 6:
+                url_page1_blibli = f"https://www.blibli.com/backend/search/products?sort=7&page=1&start=0&searchTerm={self._search_keyword}"
 
-            json_element = WebDriverWait(driver, 10).until(
+            self.driver.get(url_page1_blibli)
+
+            print(" > proses ! [6]")
+
+            json_element = WebDriverWait(self.driver, 300).until(
                 EC.presence_of_element_located((By.ID, "json"))
             )
             data = loads(json_element.text)
+
+            print(" > proses ! [7]")
 
             product_data = []
             for product in data.get('data', {}).get('products', []):
@@ -69,9 +86,9 @@ class Blibli:
                 sleep(1)
 
                 url_page2_blibli = f"https://www.blibli.com/backend/product-detail/products/is--{product_id}-00001/_summary"
-                driver.get(url_page2_blibli)
+                self.driver.get(url_page2_blibli)
 
-                json_element = WebDriverWait(driver, 10).until(
+                json_element = WebDriverWait(self.driver, 10).until(
                     EC.presence_of_element_located((By.ID, "json"))
                 )
                 data = loads(json_element.text)
@@ -82,9 +99,9 @@ class Blibli:
                 sleep(1)
 
                 url_page3_blibli = f"https://www.blibli.com/backend/product-review/public-reviews?productSku={product_id}"
-                driver.get(url_page3_blibli)
+                self.driver.get(url_page3_blibli)
 
-                json_element = WebDriverWait(driver, 10).until(
+                json_element = WebDriverWait(self.driver, 10).until(
                     EC.presence_of_element_located((By.ID, "json"))
                 )
                 data = loads(json_element.text)
@@ -111,7 +128,7 @@ class Blibli:
                     'shop': 'blibli'
                 })
 
-            driver.quit()
+            self.driver.quit()
 
             return product_list
         except Exception as e:

@@ -1,13 +1,14 @@
-from selenium import webdriver
 from time import sleep
-from json import loads
+import json
+from math import floor
 
 class Shopee:
-    def __init__(self):
+    def __init__(self, driver):
+        self.driver = driver
         self.keyword = ""
         self._search_keyword = ""
         self._save_keyword = ""
-        self.data = ""
+        # self.data = ""
 
     def set_keyword(self, keyword):
         self.keyword = keyword
@@ -17,36 +18,75 @@ class Shopee:
     def get_save_keyword(self):
         return self._save_keyword
 
+    def formula(self, max_products):
+        limit = max_products if max_products < 60 else 60
+        pages = 0
+        lates = 0
+
+        if max_products > limit:
+            pages = floor(max_products / limit)
+            lates = max_products % limit
+
+        return  limit, pages, lates
+
     # FILTER: 1 = paling relevan, 2 = paling baru, 3 = paling laris, 4 = murah ke mahal, 5 = mahal ke murah
-    def get_product(self, filter):
-        driver = webdriver.Firefox()
-
-        url_1 = f"https://shopee.co.id/search?keyword={self._search_keyword}"
-        driver.get(url_1)
-
-        # Tunggu beberapa detik agar halaman dimuat sepenuhnya
-        sleep(5)  # Sesuaikan dengan kebutuhan
-
+    def get_product(self, filters, max_products):
         # terkait 0, terbaru 1, terlaris 2, harga 3 (asc 0 -> rendah ke tinggi, DEFAULT: desc 1 -> tinggi ke rendah)
-        f = ["relevancy", "ctime", "sales", "price"]
-        o = ["asc", "desc"]
-        l = 40
+        filter_list = ["relevancy", "ctime", "sales", "price"]
+        order_list = ["asc", "desc"]
 
-        # 1 = paling relevan, 2 = paling baru, 3 = paling laris, 4 = murah ke mahal, 5 = mahal ke murah
-        if int(filter) == 1:
-            url_2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[0]}&keyword={self._save_keyword.replace(" ", "%20")}&limit={l}&newest=0&order={o[1]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
-        elif int(filter) == 2:
-            url_2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[1]}&keyword={self._save_keyword.replace(" ", "%20")}&limit={l}&newest=0&order={o[1]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
-        elif int(filter) == 3:
-            url_2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[2]}&keyword={self._save_keyword.replace(" ", "%20")}&limit={l}&newest=0&order={o[1]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
-        elif int(filter) == 4:
-            url_2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[3]}&keyword={self._save_keyword.replace(" ", "%20")}&limit={l}&newest=0&order={o[0]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
-        elif int(filter) == 5:
-            url_2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[3]}&keyword={self._save_keyword.replace(" ", "%20")}&limit={l}&newest=0&order={o[1]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
+        limit, page, limit_terakhir = self.formula(max_products)
 
-        response = driver.execute_script(f"return fetch('{url_2}').then(response => response.text())")
+        if max_products > limit:
+            limit_terakhir = max_products % limit
+            page = floor(max_products / limit)
 
-        driver.quit()
+        if 1 <= int(filters) <= 5:
+            filter_mapping = {1: (filter_list[0], order_list[1]),
+                              2: (filter_list[1], order_list[1]),
+                              3: (filter_list[2], order_list[1]),
+                              4: (filter_list[3], order_list[0]),
+                              5: (filter_list[3], order_list[1])}
 
-        self.data = response
-        return loads(response)['items']
+            filter, order = filter_mapping[int(filters)]
+
+        product_data = []
+        if page != 0:
+            for i in range(0, page+1):
+                print(f" > Request: page={i}")
+                main_url = f"https://shopee.co.id/search?keyword={self._search_keyword}&page={i}"
+
+                temp_newest = limit * i
+
+                if i == page:
+                    temp_limit = limit_terakhir
+                    print(f"            limit={temp_limit}&newest={temp_newest}")
+                else:
+                    temp_limit = limit
+                    print(f"            limit={temp_limit}&newest={temp_newest}")
+                    
+                
+                catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword.replace(" ", "%20")}&limit={temp_limit}&newest={temp_newest}&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
+                
+                self.driver.get(main_url)
+                sleep(10)
+
+                print()
+                response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
+
+                product_data.append(json.loads(response)['items'])
+        else:
+            main_url = f"https://shopee.co.id/search?keyword={self._search_keyword}"
+            catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword.replace(" ", "%20")}&limit={limit}&newest=0&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
+            
+            print(f" > Request: page={i}")
+            self.driver.get(main_url)
+            sleep(10)
+
+            print(f"            limit={limit}&newest=0")
+            response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
+            product_data.append(json.loads(response)['items'])
+
+        self.driver.quit()
+
+        return product_data
