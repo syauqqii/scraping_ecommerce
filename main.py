@@ -18,12 +18,8 @@ def formater_file(KEYWORD, CONFIG=1):
     return FORMAT_FILE.format(KEYWORD, EXTENSION_1) if CONFIG == 1 else FORMAT_FILE.format(KEYWORD, EXTENSION_2)
 
 # Make function to create file
-def create_file(_KEYWORD, DF, CONFIG=1):
-    _DIRECTORY = formater_folder()
+def create_file(_DIRECTORY, _KEYWORD, DF, CONFIG=1):
     _FILENAME  = formater_file(_KEYWORD, CONFIG)
-
-    print(f" > Proses Membuat File: {_FILENAME}")
-
     export.export_file(_DIRECTORY, _FILENAME, DF) if CONFIG == 1 else export.export_file(_DIRECTORY, _FILENAME, DF, 2)
 
 # main function
@@ -42,10 +38,10 @@ def main():
     SORTING = int(input("\n   > Input Pilihan : "))
     SORTING = int(3) if SORTING not in [1, 2, 3, 4, 5] else SORTING
 
-    print("\n # Simpan File:\n   1. csv\n   2. xlsx [DEFAULT]")
+    # print("\n # Simpan File:\n   1. csv\n   2. xlsx [DEFAULT]")
 
-    OPT_SAVING_FILE = int(input("\n   > Input Pilihan : "))
-    OPT_SAVING_FILE = int(2) if OPT_SAVING_FILE not in [1, 2] else OPT_SAVING_FILE
+    # OPT_SAVING_FILE = int(input("\n   > Input Pilihan : "))
+    # OPT_SAVING_FILE = int(2) if OPT_SAVING_FILE not in [1, 2] else OPT_SAVING_FILE
 
     print(f"\n [!] Perkiraan selesai: -+ {10 if floor(JUMLAH_PRODUK / 60) < 1 else (floor(JUMLAH_PRODUK / 60) + 1) * 10} Detik")
 
@@ -99,8 +95,15 @@ def main():
     # Concatenate the DataFrames
     # df_combined = pd.concat([df_shopee, df_blibli], ignore_index=True)
 
+    _DIRECTORY = formater_folder()
+
     # Call function to save file (1 = csv, 2 = xlsx)
-    create_file(KEYWORD.title().strip(), df_shopee, OPT_SAVING_FILE)
+    print(f" > Proses Membuat File: {KEYWORD.title().strip()}.csv")
+    create_file(_DIRECTORY, KEYWORD.title().strip(), df_shopee, 1)
+
+    print(f" > Proses Membuat File: {KEYWORD.title().strip()}.xlsx")
+    create_file(_DIRECTORY, KEYWORD.title().strip(), df_shopee, 2)
+
     print("\n -- good bye --")   
 
 # main block
