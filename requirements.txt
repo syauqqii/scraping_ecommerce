@@ -2,8 +2,13 @@ datetime
 dotenv
 json
 math
+matplotlib
+nltk
 os
 pandas
+re
 requests
+Sastrawi
+seaborn
 selenium
 time
