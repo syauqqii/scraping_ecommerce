@@ -1,0 +1,6 @@
+1. analisa data ecommerce dengan grafik
+   - harga terhadap total rating
+   - sentimen nama produk (misal: semakin bagus, semakin banyak yang beli) dengan perbandingan terjualnya
+   - whishlist terhadap produk terjual
+   - shop location terhadap produk terjual
+   - semakin banyak rating star terhadap produk terjual
