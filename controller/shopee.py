@@ -58,14 +58,9 @@ class Shopee:
 
                 temp_newest = limit * i
 
-                if i == page:
-                    temp_limit = limit_terakhir
-                    print(f"            limit={temp_limit}&newest={temp_newest}")
-                else:
-                    temp_limit = limit
-                    print(f"            limit={temp_limit}&newest={temp_newest}")
+                temp_limit = limit_terakhir if i == page else limit
                     
-                
+                print(f"            limit={temp_limit}&newest={temp_newest}")
                 catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword.replace(" ", "%20")}&limit={temp_limit}&newest={temp_newest}&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
                 
                 self.driver.get(main_url)
@@ -79,11 +74,11 @@ class Shopee:
             main_url = f"https://shopee.co.id/search?keyword={self._search_keyword}"
             catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword.replace(" ", "%20")}&limit={limit}&newest=0&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
             
-            print(f" > Request: page={i}")
+            print(f" > Request: page=0")
             self.driver.get(main_url)
             sleep(10)
 
-            print(f"            limit={limit}&newest=0")
+            print(f"            limit={limit}&newest=0\n")
             response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
             product_data.append(json.loads(response)['items'])
 

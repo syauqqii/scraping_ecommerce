@@ -4,6 +4,7 @@ import module.helper
 
 # Import library
 import pandas as pd
+from math import floor
 
 # Make function to return foldername
 def formater_folder():
@@ -20,6 +21,9 @@ def formater_file(KEYWORD, CONFIG=1):
 def create_file(_KEYWORD, DF, CONFIG=1):
     _DIRECTORY = formater_folder()
     _FILENAME  = formater_file(_KEYWORD, CONFIG)
+
+    print(f" > Proses Membuat File: {_FILENAME}")
+
     export.export_file(_DIRECTORY, _FILENAME, DF) if CONFIG == 1 else export.export_file(_DIRECTORY, _FILENAME, DF, 2)
 
 # main function
@@ -42,6 +46,8 @@ def main():
 
     OPT_SAVING_FILE = int(input("\n   > Input Pilihan : "))
     OPT_SAVING_FILE = int(2) if OPT_SAVING_FILE not in [1, 2] else OPT_SAVING_FILE
+
+    print(f"\n [!] Perkiraan selesai: -+ {10 if floor(JUMLAH_PRODUK / 60) < 1 else (floor(JUMLAH_PRODUK / 60) + 1) * 10} Detik")
 
     print()
 
@@ -94,7 +100,8 @@ def main():
     # df_combined = pd.concat([df_shopee, df_blibli], ignore_index=True)
 
     # Call function to save file (1 = csv, 2 = xlsx)
-    create_file(KEYWORD.title().strip(), df_shopee, OPT_SAVING_FILE)    
+    create_file(KEYWORD.title().strip(), df_shopee, OPT_SAVING_FILE)
+    print("\n -- good bye --")   
 
 # main block
 if __name__ == "__main__":
