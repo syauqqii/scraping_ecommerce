@@ -13,7 +13,7 @@ class Shopee:
     def set_keyword(self, keyword):
         self.keyword = keyword
         self._search_keyword = keyword.lower().replace(' ', '%20')
-        self._save_keyword = keyword.title()
+        self._save_keyword = keyword.title().replace(' ', '%20')
 
     def get_save_keyword(self):
         return self._save_keyword
@@ -61,7 +61,7 @@ class Shopee:
                 temp_limit = limit_terakhir if i == page else limit
                     
                 print(f"            limit={temp_limit}&newest={temp_newest}")
-                catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword.replace(" ", "%20")}&limit={temp_limit}&newest={temp_newest}&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
+                catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword}&limit={temp_limit}&newest={temp_newest}&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
                 
                 self.driver.get(main_url)
                 sleep(10)
@@ -72,7 +72,7 @@ class Shopee:
                 product_data.append(json.loads(response)['items'])
         else:
             main_url = f"https://shopee.co.id/search?keyword={self._search_keyword}"
-            catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword.replace(" ", "%20")}&limit={limit}&newest=0&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
+            catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword}&limit={limit}&newest=0&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
             
             print(f" > Request: page=0")
             self.driver.get(main_url)

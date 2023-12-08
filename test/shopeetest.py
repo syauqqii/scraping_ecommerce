@@ -40,7 +40,7 @@ if __name__ == "__main__":
         o = ["asc", "desc"]
 
         # Langkah 2: Eksekusi skrip JavaScript untuk mengambil data dari URL kedua
-        url_page2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[2]}&keyword={_keyword.replace(" ", "%20")}&limit=60&newest=0&order={o[1]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
+        url_page2 = f"https://shopee.co.id/api/v4/search/search_items?by={f[2]}&keyword={_keyword.replace(' ', '%20')}&limit=60&newest=0&order={o[1]}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
         response = driver.execute_script(f"return fetch('{url_page2}').then(response => response.text())")
 
         # Cetak respons
