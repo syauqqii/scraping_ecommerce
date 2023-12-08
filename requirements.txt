@@ -1,11 +1,7 @@
 datetime
 dotenv
 math
-matplotlib
-nltk
 pandas
 requests
-Sastrawi
-seaborn
 selenium
 time
