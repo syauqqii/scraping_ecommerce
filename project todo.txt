@@ -6,3 +6,13 @@
    - [DONE] semakin banyak rating star terhadap produk terjual
 
 link : https://colab.research.google.com/drive/11sERZURFq2tDcGT-B7oFzIb72V8R392s?usp=sharing
+
+Kesimpulan GPT
+
+Pengaruh Harga terhadap Jumlah Total Rating: Dari grafik 'Price vs Total Rating', tampaknya tidak ada hubungan yang sangat jelas antara harga dan jumlah total rating. Produk dengan harga yang beragam mendapatkan jumlah rating yang bervariasi.
+
+Pengaruh 'Like' terhadap Jumlah Produk Terjual: Grafik 'Likes vs Sold' menunjukkan bahwa produk dengan jumlah 'like' yang lebih tinggi cenderung memiliki penjualan yang lebih tinggi. Ini menunjukkan bahwa popularitas online dapat mempengaruhi keputusan pembelian.
+
+Rating Star vs Produk Terjual: Grafik 'Rating Star vs Sold' menunjukkan bahwa produk dengan rating bintang yang lebih tinggi cenderung terjual lebih banyak. Ini mengindikasikan bahwa kualitas produk, seperti yang tercermin dalam rating, mempengaruhi penjualan.
+
+Shop Location terhadap Produk Terjual: Dari grafik 'Shop Location vs Sold', kita melihat bahwa ada variasi dalam jumlah penjualan berdasarkan lokasi toko. Beberapa lokasi tampaknya memiliki penjualan yang lebih tinggi, yang mungkin menunjukkan adanya faktor geografis atau demografis yang mempengaruhi perilaku pembelian.
