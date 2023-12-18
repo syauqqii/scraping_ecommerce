@@ -1,0 +1,32 @@
+# Analisis data E-commerce (shopee) dengan ketentuan:
+   - [DONE] Pengaruh harga terhadap jumlah total rating
+   - [DONE] Sentimen nama produk (misal: semakin bagus, semakin banyak yang beli) dengan perbandingan terjualnya
+   - [DONE] Pengaruh like terhadap jumlah produk terjual
+   - [DONE] Shop location terhadap produk terjual
+   - [DONE] Semakin banyak rating star terhadap produk terjual
+
+# Link Google Colab (Analisis): https://colab.research.google.com/drive/11sERZURFq2tDcGT-B7oFzIb72V8R392s?usp=sharing
+
+# Kesimpulan (GPT-4)
+  + Pengaruh Harga terhadap Jumlah Total Rating: Dari grafik 'Price vs Total Rating', tampaknya tidak ada hubungan yang sangat jelas antara harga dan jumlah total rating. Produk dengan harga yang beragam mendapatkan jumlah rating yang bervariasi.
+
+  + Pengaruh 'Like' terhadap Jumlah Produk Terjual: Grafik 'Likes vs Sold' menunjukkan bahwa produk dengan jumlah 'like' yang lebih tinggi cenderung memiliki penjualan yang lebih tinggi. Ini menunjukkan bahwa popularitas online dapat mempengaruhi keputusan pembelian.
+
+  + Rating Star vs Produk Terjual: Grafik 'Rating Star vs Sold' menunjukkan bahwa produk dengan rating bintang yang lebih tinggi cenderung terjual lebih banyak. Ini mengindikasikan bahwa kualitas produk, seperti yang tercermin dalam rating, mempengaruhi penjualan.
+
+  + Shop Location terhadap Produk Terjual: Dari grafik 'Shop Location vs Sold', kita melihat bahwa ada variasi dalam jumlah penjualan berdasarkan lokasi toko. Beberapa lokasi tampaknya memiliki penjualan yang lebih tinggi, yang mungkin menunjukkan adanya faktor geografis atau demografis yang mempengaruhi perilaku pembelian.
+
+# Tambahan:
+   - Chrome driver: https://chromedriver.chromium.org/downloads
+   - Gecko driver (firefox): https://github.com/mozilla/geckodriver/releases
+
+# Note for MACBOOK user:
+   - Intel Architecture: aarch65
+   - M Series: .tar file
+   - Install chrome driver di: /usr/local/bin [disini]
+   - Settings -> Security & Privacy -> Allow Anyway
+
+# Pip Version:
+   - 23.2.1
+   - Command: python -m pip install --upgrade pip==23.2.1 atau
+              python3 -m pip install --upgrade pip==23.2.1
