@@ -92,6 +92,8 @@ def main():
         'shop': 'shopee'
     })
 
+    df_shopee = df_shopee.drop_duplicates(subset='itemid', keep='first')
+
     # df_blibli = pd.DataFrame(data_blibli)
 
     # Concatenate the DataFrames
