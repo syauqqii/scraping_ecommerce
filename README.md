@@ -1,7 +1,7 @@
 # **Scraping E-Commerce (Shopee)**
 Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
 
-## **Note**
+# **Note**
 Gunakan python versi 3 ```Python3```
 ```
 python --version / python --version
@@ -14,3 +14,4 @@ Downgrade / Upgrade ke pip versi ```23.2.1```
 ```
 python3 -m pip install --upgrade pip==23.2.1
 ```
+### **Baca Petunjuk Lengkap di File: "doc.txt"**
