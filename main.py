@@ -53,7 +53,7 @@ def main():
     driver = module.controller.Driver.create_driver(DRIVER_OPTION, int(GUI_MODE))
 
     # Create object from class -- controller
-    #blibli = module.controller.Blibli(driver)
+    # blibli = module.controller.Blibli(driver)
     shopee = module.controller.Shopee(driver)
 
     shopee.set_keyword(KEYWORD)
@@ -123,8 +123,8 @@ if __name__ == "__main__":
 
         # Read environment -- general
         USER_AGENT      = setup.get_variable("USER_AGENT")
-        RESULT_SCRAPING = setup.get_variable("RESULT_SCRAPING") # 'result_scraping/'
-        FORMAT_FOLDER   = setup.get_variable("FORMAT_FOLDER")   # '{}.{}.{}_{}-{}-{}/'
+        RESULT_SCRAPING = setup.get_variable("RESULT_SCRAPING") # 'result/'
+        FORMAT_FOLDER   = setup.get_variable("FORMAT_FOLDER")   # '{}-{}-{}/'
         FORMAT_FILE     = setup.get_variable("FORMAT_FILE")     # '{}.{}'
         EXTENSION_1     = setup.get_variable("EXTENSION_1")     # 'csv'
         EXTENSION_2     = setup.get_variable("EXTENSION_2")     # 'xlsx'
