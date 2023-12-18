@@ -9,9 +9,11 @@ from math import floor
 # Make function to return foldername
 def formater_folder():
     # Set variable from other object function
-    HOUR, MINUTE, SECOND, DAY, MONTH, YEAR = other.get_datetime()
+    # HOUR, MINUTE, SECOND, DAY, MONTH, YEAR = other.get_datetime()
+    DAY, MONTH, YEAR = other.get_datetime()
     # Set Format Directory Name
-    return f"{RESULT_SCRAPING}{FORMAT_FOLDER.format(HOUR, MINUTE, SECOND, DAY, MONTH, YEAR)}" # result_scraping/10.25.30_06-12-2023/
+    # return f"{RESULT_SCRAPING}{FORMAT_FOLDER.format(HOUR, MINUTE, SECOND, DAY, MONTH, YEAR)}" # result_scraping/10.25.30_06-12-2023/
+    return f"{RESULT_SCRAPING}{FORMAT_FOLDER.format(DAY, MONTH, YEAR)}" # result_scraping/10.25.30_06-12-2023/
 
 # Make funtion to return filename
 def formater_file(KEYWORD, CONFIG=1):

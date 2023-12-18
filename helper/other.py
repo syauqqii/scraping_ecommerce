@@ -23,4 +23,5 @@ class Other:
         def fnum(number):
             return str(number).zfill(2)
 
-        return fnum(now.hour), fnum(now.minute), fnum(now.second), fnum(now.day), fnum(now.month), now.year
+        # return fnum(now.hour), fnum(now.minute), fnum(now.second), fnum(now.day), fnum(now.month), now.year
+        return fnum(now.day), fnum(now.month), now.year
