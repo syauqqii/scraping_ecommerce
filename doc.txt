@@ -19,6 +19,9 @@
 # Tambahan:
    - Chrome driver: https://chromedriver.chromium.org/downloads
    - Gecko driver (firefox): https://github.com/mozilla/geckodriver/releases
+   - Python 3.12.0 : https://www.python.org/downloads/macos/   (macos)
+                     https://www.python.org/downloads/source/  (linux)
+                     https://www.python.org/downloads/windows/ (windows)
 
 # Note for MACBOOK user:
    - Intel Architecture: aarch65
