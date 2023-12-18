@@ -3,11 +3,12 @@ import json
 from math import floor
 
 class Shopee:
-    def __init__(self, driver):
+    def __init__(self, driver, TIMEOUT):
         self.driver = driver
         self.keyword = ""
         self._search_keyword = ""
         self._save_keyword = ""
+        self.TIMEOUT = TIMEOUT
         # self.data = ""
 
     def set_keyword(self, keyword):
@@ -64,7 +65,7 @@ class Shopee:
                 catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword}&limit={temp_limit}&newest={temp_newest}&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
                 
                 self.driver.get(main_url)
-                sleep(10)
+                sleep(self.TIMEOUT)
 
                 print()
                 response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
@@ -76,7 +77,7 @@ class Shopee:
             
             print(f" > Request: page=0")
             self.driver.get(main_url)
-            sleep(10)
+            sleep(self.TIMEOUT)
 
             print(f"            limit={limit}&newest=0\n")
             response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")

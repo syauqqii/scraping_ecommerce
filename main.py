@@ -33,28 +33,48 @@ def main():
     KEYWORD = str(input("\n > Input Keyword       : "))
     _KEYWORD = KEYWORD.lower().strip().replace(" ", "%20")
 
-    JUMLAH_PRODUK = int(input(" > Input Jumlah Produk : "))
+    _DIRECTORY = formater_folder()
 
-    print("\n # Sorting Produk:\n   1. paling relevan\n   2. paling baru\n   3. paling laris [DEFAULT]\n   4. harga: murah -> mahal\n   5. harga: mahal -> murah")
+    if export.is_file_exists(_DIRECTORY, f"{KEYWORD.title().strip()}.csv") or export.is_file_exists(_DIRECTORY, f"{KEYWORD.title().strip()}.xlsx"):
+        choice = input(f"\n > File ({_DIRECTORY}{KEYWORD.title().strip()} [.csv / .xlsx]) SUDAH ADA\n   apakah anda yakin ingin scrapping dengan keyword itu lagi? (y/n) ")
+        if choice.lower() != 'y':
+            main()
+            
+    JUMLAH_PRODUK = int(input("\n > Input Jumlah Produk : (max. 1000) "))
+
+    # Mengecek apakah JUMLAH_PRODUK lebih dari 1500
+    if JUMLAH_PRODUK >= 1000:
+        JUMLAH_PRODUK = 1000
+        print("   Jumlah Produk = 1000")
+    # Mengecek apakah JUMLAH_PRODUK kurang dari 1
+    elif JUMLAH_PRODUK <= 1:
+        JUMLAH_PRODUK = 1
+        print("   Jumlah Produk = 1")
+    else:
+        print(f"   Jumlah Produk = {JUMLAH_PRODUK}")
+
+    print("\n # Sorting Produk:\n   1. paling relevan [DEFAULT]\n   2. paling baru\n   3. paling laris\n   4. harga: murah -> mahal\n   5. harga: mahal -> murah")
 
     SORTING = int(input("\n   > Input Pilihan : "))
-    SORTING = int(3) if SORTING not in [1, 2, 3, 4, 5] else SORTING
+    SORTING = int(1) if SORTING not in [1, 2, 3, 4, 5] else SORTING
 
     # print("\n # Simpan File:\n   1. csv\n   2. xlsx [DEFAULT]")
 
     # OPT_SAVING_FILE = int(input("\n   > Input Pilihan : "))
     # OPT_SAVING_FILE = int(2) if OPT_SAVING_FILE not in [1, 2] else OPT_SAVING_FILE
 
-    print(f"\n [!] Perkiraan selesai: -+ {10 if floor(JUMLAH_PRODUK / 60) < 1 else (floor(JUMLAH_PRODUK / 60) + 1) * 10} Detik")
+    total_detik = (TIMEOUT + TOLERANT) if JUMLAH_PRODUK < 60 else ((floor(JUMLAH_PRODUK / 60) + 1) * TIMEOUT) + (TOLERANT * (floor(JUMLAH_PRODUK / 60) + 1))
+    menit = total_detik // 60
+    detik_sisa = total_detik % 60
 
-    print()
+    print(f"\n [!] Perkiraan selesai: {menit} Menit {detik_sisa} Detik ({total_detik} detik)\n")
 
     # Create driver
     driver = module.controller.Driver.create_driver(DRIVER_OPTION, int(GUI_MODE))
 
     # Create object from class -- controller
     # blibli = module.controller.Blibli(driver)
-    shopee = module.controller.Shopee(driver)
+    shopee = module.controller.Shopee(driver, TIMEOUT)
 
     shopee.set_keyword(KEYWORD)
     # blibli.set_keyword(KEYWORD)
@@ -92,14 +112,19 @@ def main():
         'shop': 'shopee'
     })
 
+    # Hapus data yang memiliki sold 0 dan rating start 0
+    df_shopee = df_shopee.loc[(df_shopee['sold'] != 0) & (df_shopee['rating_star'] != 0)]
+
+    # Hapus Duplicated data
     df_shopee = df_shopee.drop_duplicates(subset='itemid', keep='first')
+
+    jumlah_baris = len(df_shopee)
+    print(f" > Total Data Setelah Penghapusan Duplikat: {jumlah_baris}\n")
 
     # df_blibli = pd.DataFrame(data_blibli)
 
     # Concatenate the DataFrames
     # df_combined = pd.concat([df_shopee, df_blibli], ignore_index=True)
-
-    _DIRECTORY = formater_folder()
 
     # Call function to save file (1 = csv, 2 = xlsx)
     print(f" > Proses Membuat File: {KEYWORD.title().strip()}.csv")
@@ -108,7 +133,7 @@ def main():
     print(f" > Proses Membuat File: {KEYWORD.title().strip()}.xlsx")
     create_file(_DIRECTORY, KEYWORD.title().strip(), df_shopee, 2)
 
-    print("\n -- good bye --")   
+    print("\n -- Selamat tinggal --")  
 
 # main block
 if __name__ == "__main__":
@@ -128,6 +153,8 @@ if __name__ == "__main__":
         FORMAT_FILE     = setup.get_variable("FORMAT_FILE")     # '{}.{}'
         EXTENSION_1     = setup.get_variable("EXTENSION_1")     # 'csv'
         EXTENSION_2     = setup.get_variable("EXTENSION_2")     # 'xlsx'
+        TIMEOUT         = int(setup.get_variable("TIMEOUT"))
+        TOLERANT        = int(setup.get_variable("TOLERANT"))
 
         # Read environment -- driver
         GUI_MODE = setup.get_variable("GUI_MODE")

@@ -23,6 +23,11 @@ class Export:
         else:
             pass
 
+     # Make function to check file existence
+    def is_file_exists(self, directory, filename):
+        file_path = path.join(directory, filename)
+        return path.exists(file_path)
+
     # Make function to make file
     def make_file(self, directory, filename, data):
         if self.is_directory_exists(directory):
