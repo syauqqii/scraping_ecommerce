@@ -4,7 +4,7 @@ Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
 # **Note**
 Gunakan ```Python 3.12.0```
 ```
-python --version / python --version
+python --version / python3 --version
 ```
 Gunakan pip versi ```23.2.1```,<br>
 ```
