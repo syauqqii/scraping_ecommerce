@@ -14,4 +14,4 @@ Downgrade / Upgrade ke pip versi ```23.2.1```
 ```
 python3 -m pip install --upgrade pip==23.2.1
 ```
-### **Baca Petunjuk Lengkap di File: "doc.txt"**
+### **Baca Petunjuk Lengkap di File: "[doc.txt](https://github.com/syauqqii/scraping_ecommerce/blob/main/doc.txt)"**
