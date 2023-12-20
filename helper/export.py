@@ -46,9 +46,10 @@ class Export:
                     dataframe.to_csv(f"{directory}/{filename}", index=False)
                 else:
                     dataframe.to_excel(f"{directory}/{filename}", index=False)
-            except Exception:
+            except Exception as e:
                 # Exception handling if cant make directory
                 print("\n > Error: Cannot make file\n   [DEBUG: export_file() => (helper/export.py)]")
+                # print(f"\n > Error: Cannot make file\n   [DEBUG: export_file() => (helper/export.py)]\n\n > ERROR: {e}")
                 exit()
         else:
             self.make_directory(directory)
@@ -57,7 +58,8 @@ class Export:
                     dataframe.to_csv(f"{directory}/{filename}", index=False)
                 else:
                     dataframe.to_excel(f"{directory}/{filename}", index=False)
-            except Exception:
+            except Exception as e:
                 # Exception handling if cant make directory
                 print("\n > Error: Cannot make file\n   [DEBUG: export_file() => (helper/export.py)]")
+                # print(f"\n > Error: Cannot make file\n   [DEBUG: export_file() => (helper/export.py)]\n\n > ERROR: {e}")
                 exit()
