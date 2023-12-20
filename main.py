@@ -31,6 +31,12 @@ def main():
 
     # Set Keyword Variable Name
     KEYWORD = str(input("\n > Input Keyword       : "))
+    
+    if KEYWORD.strip() == "":
+        main()
+    elif KEYWORD.strip() == "-1":
+        exit(0)
+    
     _KEYWORD = KEYWORD.lower().strip().replace(" ", "%20")
 
     _DIRECTORY = formater_folder()
