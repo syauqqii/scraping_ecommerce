@@ -17,7 +17,7 @@ pip --version / pip3 --version
 ```
 python3 -m pip install --upgrade pip==23.2.1
 ```
-### **[Baca Petunjuk Tambahan](https://github.com/syauqqii/scraping_ecommerce/blob/main/doc.txt)"**
+### **[Baca Petunjuk Tambahan](https://github.com/syauqqii/scraping_ecommerce/blob/main/doc.txt)**
 
 # **Catatan Penting**
 > Dengan informasi diatas mengenai versi python dan juga pip nya, jika versi sudah sama dipastikan akan aman / stabil menjalankan kode diatas dengan sistem operasi
