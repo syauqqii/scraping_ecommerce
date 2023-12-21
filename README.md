@@ -6,7 +6,7 @@ _\ \ | | | (_) | |_) |  __/  __/ _\ \ (__| | | (_| | |_) |  __/ |
 \__/_| |_|\___/| .__/ \___|\___| \__/\___|_|  \__,_| .__/ \___|_|   
                |_|                                 |_|
 
- > Input Keyword: _
+> Input Keyword       : _
 ```
 # **Scraping E-Commerce (Shopee)**
 Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
