@@ -5,12 +5,12 @@ Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
 Analisis ini bertujuan untuk mendapatkan informasi berdasarkan dataset shopee yang telah kami scraping dengan menggunakan library selenium. Mengapa shopee? karena shopee termasuk E-Commerce dengan transaksi terbesar se-Asia Tenggara pada tahun 2022 '[sumber](https://goodstats.id/article/shopee-platform-e-commerce-dengan-nilai-transaksi-terbesar-di-asia-tenggara-2022-bc0uV)'
 
 ```
- __ _                             __                                
-/ _\ |__   ___  _ __   ___  ___  / _\ ___ _ __ __ _ _ __   ___ _ __ 
-\ \| '_ \ / _ \| '_ \ / _ \/ _ \ \ \ / __| '__/ _` | '_ \ / _ \ '__|
-_\ \ | | | (_) | |_) |  __/  __/ _\ \ (__| | | (_| | |_) |  __/ |   
-\__/_| |_|\___/| .__/ \___|\___| \__/\___|_|  \__,_| .__/ \___|_|   
-               |_|                                 |_|
+ __ _
+/ _\ |__   ___  _ __   ___  ___
+\ \| '_ \ / _ \| '_ \ / _ \/ _ \
+_\ \ | | | (_) | |_) |  __/  __/
+\__/_| |_|\___/| .__/ \___|\___|
+               |_|
 
 > Input Keyword       : _
 ```
