@@ -6,10 +6,11 @@ Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
 ```
 python --version / python3 --version
 ```
-> Gunakan pip versi ```23.2.1```,<br>
+> Gunakan pip versi ```23.2.1```
 ```
 pip --version / pip3 --version
 ```
+<br>
 > Downgrade / Upgrade ke pip versi ```23.2.1```
 ```
 python3 -m pip install --upgrade pip==23.2.1
