@@ -29,6 +29,8 @@ def main():
     # Clear Console from other object function
     other.clear_screen()
 
+    other.get_banner()
+
     # Set Keyword Variable Name
     KEYWORD = str(input("\n > Input Keyword       : "))
     

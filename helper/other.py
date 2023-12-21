@@ -25,3 +25,12 @@ class Other:
 
         # return fnum(now.hour), fnum(now.minute), fnum(now.second), fnum(now.day), fnum(now.month), now.year
         return fnum(now.day), fnum(now.month), now.year
+
+    @staticmethod
+    def get_banner():
+        print("""  __ _
+ / _\\ |__   ___  _ __   ___  ___
+ \\ \\| '_ \\ / _ \\| '_ \\ / _ \\/ _ \\
+ _\\ \\ | | | (_) | |_) |  __/  __/
+ \\__/_| |_|\\___/| .__/ \\___|\\___|
+                |_|""")
