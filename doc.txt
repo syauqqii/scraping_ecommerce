@@ -33,3 +33,10 @@
    - 23.2.1
    - Command: python -m pip install --upgrade pip==23.2.1 atau
               python3 -m pip install --upgrade pip==23.2.1
+
+# New Release Note:
+   - Step Text Cleaning + Analysis Data:
+      text cleaning (clear all Non-alfanumeric [ex: symbol])
+      stopwords (id)
+      translate (id -> en)
+      stopwords (en)

@@ -32,11 +32,11 @@ def read_csv_or_excel(file_path):
         return read_excel(file_path)
 
 def main():
-    result_folder = "../result"
+    result_folder = "result"
 
     while True:
         os.system("cls||clear")
-        
+
         folders = list_folders(result_folder)
         display_menu_folder(folders)
 
