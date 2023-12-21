@@ -1,3 +1,9 @@
+# **Scraping E-Commerce (Shopee)**
+Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
+
+> **Deskripsi**:<br>
+Analisis ini bertujuan untuk mendapatkan informasi berdasarkan dataset shopee yang telah kami scraping dengan menggunakan library selenium. Mengapa shopee? karena shopee termasuk E-Commerce dengan transaksi terbesar se-Asia Tenggara pada tahun 2022 '[sumber](https://goodstats.id/article/shopee-platform-e-commerce-dengan-nilai-transaksi-terbesar-di-asia-tenggara-2022-bc0uV)'
+
 ```
  __ _                             __                                
 / _\ |__   ___  _ __   ___  ___  / _\ ___ _ __ __ _ _ __   ___ _ __ 
@@ -8,11 +14,6 @@ _\ \ | | | (_) | |_) |  __/  __/ _\ \ (__| | | (_| | |_) |  __/ |
 
 > Input Keyword       : _
 ```
-# **Scraping E-Commerce (Shopee)**
-Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
-
-> **Deskripsi**:<br>
-Analisis ini bertujuan untuk mendapatkan informasi berdasarkan dataset shopee yang telah kami scraping dengan menggunakan library selenium. Mengapa shopee? karena shopee termasuk E-Commerce dengan transaksi terbesar se-Asia Tenggara pada tahun 2022 '[sumber](https://goodstats.id/article/shopee-platform-e-commerce-dengan-nilai-transaksi-terbesar-di-asia-tenggara-2022-bc0uV)'
 
 # **Informasi Penggunaan**
 > Gunakan ```Python 3.12.0```
