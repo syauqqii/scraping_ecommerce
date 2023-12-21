@@ -126,8 +126,16 @@ def main():
     # Hapus Duplicated data
     df_shopee = df_shopee.drop_duplicates(subset='itemid', keep='first')
 
+    # Sorting Produk dengan sold paling banyak -> paling dikit
+    df_shopee = df_shopee.sort_values(by='sold', ascending=False)
+
     jumlah_baris = len(df_shopee)
-    print(f" > Total Data Setelah Penghapusan Duplikat: {jumlah_baris}\n")
+
+    if jumlah_baris < JUMLAH_PRODUK:
+        print(f" > WARNING: Hasil  dari scraping {JUMLAH_PRODUK} produk, hanya mendapatkan {jumlah_baris} produk saja.\n")
+    else:
+        df_shopee = df_shopee.head(JUMLAH_PRODUK)
+        print(f" > SUCCESS: Berhasil scraping {JUMLAH_PRODUK} produk.\n")
 
     # df_blibli = pd.DataFrame(data_blibli)
 

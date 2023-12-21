@@ -2,6 +2,10 @@ from time import sleep
 import json
 from math import floor
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 class Shopee:
     def __init__(self, driver, TIMEOUT):
         self.driver = driver
@@ -10,6 +14,13 @@ class Shopee:
         self._save_keyword = ""
         self.TIMEOUT = TIMEOUT
         # self.data = ""
+
+    def wait_for_page_load(self):
+        try:
+            element_present = EC.presence_of_element_located((By.TAG_NAME, 'body'))
+            WebDriverWait(self.driver, self.TIMEOUT).until(element_present)
+        except Exception as e:
+            print(f"Error: {e}")
 
     def set_keyword(self, keyword):
         self.keyword = keyword
@@ -60,28 +71,36 @@ class Shopee:
                 temp_newest = limit * i
 
                 temp_limit = limit_terakhir if i == page else limit
-                    
-                print(f"            limit={temp_limit}&newest={temp_newest}")
                 catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword}&limit={temp_limit}&newest={temp_newest}&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
                 
                 self.driver.get(main_url)
+                self.wait_for_page_load()
                 sleep(self.TIMEOUT)
 
-                print()
-                response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
-
-                product_data.append(json.loads(response)['items'])
+                print(f"            limit={temp_limit}&newest={temp_newest}\n")
+                try:
+                    response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
+                    product_data.append(json.loads(response)['items'])
+                except Exception as e:
+                    # print(f" ! ERROR: fetching data: {e}\n")
+                    print(f" ! ERROR: Max products reached.\n")
+                    break
         else:
             main_url = f"https://shopee.co.id/search?keyword={self._search_keyword}"
             catch_produk_url = f"https://shopee.co.id/api/v4/search/search_items?by={filter}&keyword={self._save_keyword}&limit={limit}&newest=0&order={order}&page_type=search&scenario=PAGE_SEO_SEARCH&version=2"
             
             print(f" > Request: page=0")
             self.driver.get(main_url)
+            self.wait_for_page_load()
             sleep(self.TIMEOUT)
 
             print(f"            limit={limit}&newest=0\n")
-            response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
-            product_data.append(json.loads(response)['items'])
+            try:
+                response = self.driver.execute_script(f"return fetch('{catch_produk_url}').then(response => response.text())")
+                product_data.append(json.loads(response)['items'])
+            except Exception as e:
+                # print(f" ! ERROR: fetching data: {e}\n")
+                print(f" ! ERROR: Max products reached.\n")
 
         self.driver.quit()
 

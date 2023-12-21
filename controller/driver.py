@@ -11,15 +11,14 @@ class Driver:
         if GUI_MODE == 0:
             options.add_argument('--headless')
             options.add_argument('--disable-gpu')
-        else:
-            pass
+            options.add_argument('--no-sandbox')
             
         if browser == "edge":
             options.use_chromium = True
-            
-        options.add_argument('--enable-javascript')
-        options.add_argument('--log-level=3')
-        options.add_argument('--silent')
+
+            options.add_argument('--enable-javascript')
+            options.add_argument('--log-level=3')
+            options.add_argument('--silent')
 
         driver = None
         if browser == "chrome":
