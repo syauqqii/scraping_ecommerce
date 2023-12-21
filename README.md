@@ -10,8 +10,7 @@ python --version / python3 --version
 ```
 pip --version / pip3 --version
 ```
-<br>
-> Downgrade / Upgrade ke pip versi ```23.2.1```
+## Downgrade / Upgrade ke pip versi ```23.2.1```
 ```
 python3 -m pip install --upgrade pip==23.2.1
 ```
