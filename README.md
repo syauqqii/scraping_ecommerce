@@ -32,7 +32,7 @@ python3 -m pip install --upgrade pip==23.2.1
 > Jika versi tidak sama dengan di atas, rekomendasi saya segera ganti dengan versi yang sama, supaya program berjalan dengan stabil.
 ### **[BACA PETUNJUK TAMBAHAN](https://github.com/syauqqii/scraping_ecommerce/blob/main/doc.txt)**
 
-# **Catatan Penting**
+# **Catatan Tambahan**
 > Dengan informasi diatas mengenai versi python dan juga pip nya, jika versi sudah sama dipastikan akan aman / stabil menjalankan kode diatas dengan sistem operasi
 > 'Windows', untuk OS lain seperti Linux dan Macbook, terdapat pengaturan tambahan untuk set lokasi terinstallnya webdriver seperti Firefox (geckodriver), Chrome (chromedriver), maupun Edge.
 
