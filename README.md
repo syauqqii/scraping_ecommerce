@@ -28,6 +28,8 @@ pip --version / pip3 --version
 ```
 python3 -m pip install --upgrade pip==23.2.1
 ```
+> **PENTING**<br>
+> Jika versi tidak sama dengan di atas, rekomendasi saya segera ganti dengan versi yang sama, supaya program berjalan dengan stabil.
 ### **[BACA PETUNJUK TAMBAHAN](https://github.com/syauqqii/scraping_ecommerce/blob/main/doc.txt)**
 
 # **Catatan Penting**
