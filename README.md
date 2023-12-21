@@ -36,4 +36,5 @@ python3 -m pip install --upgrade pip==23.2.1
 > Dengan informasi diatas mengenai versi python dan juga pip nya, jika versi sudah sama dipastikan akan aman / stabil menjalankan kode diatas dengan sistem operasi
 > 'Windows', untuk OS lain seperti Linux dan Macbook, terdapat pengaturan tambahan untuk set lokasi terinstallnya webdriver seperti Firefox (geckodriver), Chrome (chromedriver), maupun Edge.
 
-### **[FILE GOOGLE COLAB](https://colab.research.google.com/drive/11sERZURFq2tDcGT-B7oFzIb72V8R392s?usp=sharing)** (Untuk analisis hasil scraping)
+# **Untuk Melakukan Analisa terhadap Hasil Scraping**
+### **[FILE GOOGLE COLAB](https://colab.research.google.com/drive/11sERZURFq2tDcGT-B7oFzIb72V8R392s?usp=sharing)**
