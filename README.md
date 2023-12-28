@@ -38,3 +38,6 @@ python3 -m pip install --upgrade pip==23.2.1
 
 # **Untuk Melakukan Analisa terhadap Hasil Scraping**
 ### **[FILE GOOGLE COLAB](https://colab.research.google.com/drive/11sERZURFq2tDcGT-B7oFzIb72V8R392s?usp=sharing)**
+
+# **PENTING SEKALI**
+Tujuan pembuatan script ini hanya untuk edukasi, diluar itu saya tidak bertanggung jawab.
