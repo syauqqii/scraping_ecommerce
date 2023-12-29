@@ -16,15 +16,15 @@ _\ \ | | | (_) | |_) |  __/  __/
 ```
 
 # **Informasi Penggunaan**
-> Gunakan ```Python 3.12.0```bash
+> Gunakan ```Python 3.12.0```
 ```python3
 python --version / python3 --version
 ```
-> Gunakan pip versi ```23.2.1```bash
+> Gunakan pip versi ```23.2.1```
 ```python3
 pip --version / pip3 --version
 ```
-##### Downgrade / Upgrade ke pip versi ```23.2.1```bash
+##### Downgrade / Upgrade ke pip versi ```23.2.1```
 ```python3
 python3 -m pip install --upgrade pip==23.2.1
 ```
