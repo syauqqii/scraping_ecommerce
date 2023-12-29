@@ -4,7 +4,7 @@ Tujuan scrapping ini untuk memenuhi matakuliah Big Data Analytics.
 > **Deskripsi**:<br>
 Analisis ini bertujuan untuk mendapatkan informasi berdasarkan dataset shopee yang telah kami scraping dengan menggunakan library selenium. Mengapa shopee? karena shopee termasuk E-Commerce dengan transaksi terbesar se-Asia Tenggara pada tahun 2022 '[sumber](https://goodstats.id/article/shopee-platform-e-commerce-dengan-nilai-transaksi-terbesar-di-asia-tenggara-2022-bc0uV)'
 
-```
+```bash
  __ _
 / _\ |__   ___  _ __   ___  ___
 \ \| '_ \ / _ \| '_ \ / _ \/ _ \
@@ -16,16 +16,16 @@ _\ \ | | | (_) | |_) |  __/  __/
 ```
 
 # **Informasi Penggunaan**
-> Gunakan ```Python 3.12.0```
-```
+> Gunakan ```Python 3.12.0```bash
+```python3
 python --version / python3 --version
 ```
-> Gunakan pip versi ```23.2.1```
-```
+> Gunakan pip versi ```23.2.1```bash
+```python3
 pip --version / pip3 --version
 ```
-##### Downgrade / Upgrade ke pip versi ```23.2.1```
-```
+##### Downgrade / Upgrade ke pip versi ```23.2.1```bash
+```python3
 python3 -m pip install --upgrade pip==23.2.1
 ```
 > **PENTING**<br>
